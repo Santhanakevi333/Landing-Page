@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+
+        </div>
+        <nav>
+            <ul>
+                <li class="items"><a href="#home" class="links">HOME</a></li>
+                <li class="items"><a href="#about" class="links">ABOUT</a></li>
+                <li class="items"><a href="#contact" class="links">CONTACT</a></li>
+                <li class="items"><a href="#login" class="links">LOGIN</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="section" id="home">
+            <h1>HOME</h1>
+        </div>
+        <div class="section" id="about">
+            <h1>ABOUT</h1>
+        </div>
+        <div class="section" id="contact">
+            <h1>CONTACT</h1>
+        </div>
+        <div class="section" id="login">
+            <h1>LOGIN</h1>
+        </div>
+    </main>
+
+
+    <script>
+        var header = document.querySelector("header")
+        var links = document.querySelectorAll(".links")
+        var section = document.querySelectorAll(".section")
+        window.onscroll = function () {
+            if (window.pageYOffset > header.offsetHeight) {
+                header.style.background = "rgba(0,0,0,0.5)";
+            }
+            else {
+                header.style.background = "black"
+            }
+            var current = "home";
+            section.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 60) {
+                    current = section.getAttribute("id");
+
+                }
+            })
+            links.forEach((item) => {
+                item.classList.remove("active");
+                if (item.href.includes(current)) {
+                    item.classList.add("active");
+                }
+                else {
+                    item.classList.remove("active");
+                }
+            })
+        }
+
+
+
+    </script>
+</body>
+
+</html>
